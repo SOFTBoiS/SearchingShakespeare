@@ -7,4 +7,4 @@
 Project builds a suffixtree from a large .txt-file.
 Then through a beuatiful UI you can search in the text for a typed in searchstring
 
-![]SearchingShakespeareScreenshot.png
+![](SearchingShakespeareScreenshot.png)
