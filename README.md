@@ -1,7 +1,7 @@
 # MP3_Searching_Shakespeares_Complete_Works
 
-##Project builds a suffixtree from a large .txt-file.
-##Then through a beuatiful UI you can search in the text for a typed in searchstring
+**Project builds a suffixtree from a large .txt-file.
+Then through a beuatiful UI you can search in the text for a typed in searchstring**
 
 **Can only be run on windows**
 
