@@ -18,16 +18,14 @@ namespace Searching_Shakespeare.Logic
         public SuffixTree(string text)
         {
             Text = text;
-            // -1 is given to signal non-values in root node
-            _root = new LinkedNode(new Key(-1, -1), -1);
+            _root = new Node();
             TextLower = text.ToLower();
 
             //SuffixTree is made:
             var textLength = Text.Length;
             for (var i = 0; i < textLength; i++)
             {
-                var key = new Key(i, textLength);
-                _root.Add(TextLower, key, i);
+                _root.Add(TextLower, i, textLength, i);
             }
         }
 
@@ -39,40 +37,27 @@ namespace Searching_Shakespeare.Logic
             search = search.ToLower();
             const int extraCharAmount = 130; //Extra chars to add to each searchresult
 
-            // Find the root node of the result
-            //The parent node which holds all search-results in it's children
+            //Find the parent node which holds all search-results in it's children
             var resNode = _root.Locate(TextLower, search);
 
             //No search matches
             if (resNode == null) return res;
 
             //Find all values of the searchmatch
-            FindValuesOfChildren(resValues, resNode, maxResultAmount);
+            resNode.FindResultValues(resValues, maxResultAmount);
             resValues.Sort();
 
             //Convert the match values to substrings
             foreach (var value in resValues)
             {
+                //Sets length of current substring and makes sure no IndexOutOfRangeException is thrown
                 var printLength = Math.Min(search.Length + extraCharAmount, Text.Length - value);
-                res.Add($"Index: {value}, Text: {Text.Substring(value, printLength)}");
+
+                //Adds substring to the result list with given index
+                res.Add($"Index: {value}, {Text.Substring(value, printLength)}");
             }
 
             return res;
-        }
-
-        //Helper method to find all values from children of a node
-        private void FindValuesOfChildren(ICollection<int> values, Node node, int maxResultAmount)
-        {
-            if (node.GetType() == typeof(KeyNode))
-            {
-                values.Add(node.Value);
-            }
-
-            foreach (var child in node.Children)
-            {
-                if (values.Count > maxResultAmount) break; //Lower number for better performance
-                FindValuesOfChildren(values, child, maxResultAmount);
-            }
         }
     }
 }

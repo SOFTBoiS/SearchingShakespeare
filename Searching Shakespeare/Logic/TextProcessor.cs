@@ -7,14 +7,14 @@ namespace Searching_Shakespeare.Logic
 {
     public static class TextProcessor
     {
-
         //Reads the textfile (with a default path) and returns the text as a string with whitespaces replaced with spaces
-        public static string ReadText(string path = @"..\..\..\shakespeare-complete-works.txt") //Change this path to your own location of the file if this does not work
+        //Change the path to your own location of the file if this does not work
+        public static string ReadText(string path = @"..\..\..\shakespeare-complete-works.txt")
         {
             try
             {
                 var text = File.ReadAllText(path);
-                
+
                 //Replace all whitespaces with a space. (Build-optimization and cleaner search-results)
                 return Regex.Replace(text, @"\s+", " ");
             }

@@ -12,6 +12,8 @@
         <FileAlignment>512</FileAlignment>
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
         <Deterministic>true</Deterministic>
+        <LangVersion>8</LangVersion>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -52,7 +54,8 @@
         <Compile Include="Form1.Designer.cs">
             <DependentUpon>Form1.cs</DependentUpon>
         </Compile>
-        <Compile Include="Logic\Key.cs" />
+        <Compile Include="Logic\IChildNode.cs" />
+        <Compile Include="Logic\INode.cs" />
         <Compile Include="Logic\KeyNode.cs" />
         <Compile Include="Logic\LinkedNode.cs" />
         <Compile Include="Logic\Node.cs" />
