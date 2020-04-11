@@ -22,7 +22,7 @@ namespace Searching_Shakespeare.Logic
 
         public void Add(string text, int start, int end, int value)
         {
-            //The recursion stops here
+            //Handled by Node and linkednode
         }
 
         public IChildNode? Locate(string text, string search)
